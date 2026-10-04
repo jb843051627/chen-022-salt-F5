@@ -37,26 +37,54 @@ public class TSaltYearTask implements Serializable {
     @ApiModelProperty(value = "年检催办条目代号")
     private String itemNo;
 
+    /** 拴着哪家企业 */
+    @TableField("ent_id")
+    @JsonSerialize(using = ToStringSerializer.class)
+    @ApiModelProperty(value = "拴着哪家企业")
+    private Long entId;
+
+    /** 事由 0年检催办 1换证提醒 */
+    @TableField("biz_type")
+    @ApiModelProperty(value = "事由 0年检催办 1换证提醒")
+    private Integer bizType;
+
     /** 应开口那一日的止点时刻 */
     @TableField("due_at")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "应开口那一日的止点时刻")
     private Date dueAt;
 
-    /** 最可提前几日开口 */
+    /** 最可提前几个工作日开口 */
     @TableField("amount")
-    @ApiModelProperty(value = "最可提前几日开口")
+    @ApiModelProperty(value = "最可提前几个工作日开口")
     private BigDecimal amount;
 
-    /** 事由与所对企业的记要 */
-    @TableField("content")
-    @ApiModelProperty(value = "事由与所对企业的记要")
-    private String content;
+    /** 照哪一份话本去发 */
+    @TableField("script_code")
+    @ApiModelProperty(value = "照哪一份话本去发")
+    private String scriptCode;
 
     /** 条目情形 0待派 1已派出 2分不出 */
     @TableField("status")
     @ApiModelProperty(value = "条目情形 0待派 1已派出 2分不出")
     private Integer status;
+
+    /** 派给了哪位执法员 */
+    @TableField("assigned_to")
+    @JsonSerialize(using = ToStringSerializer.class)
+    @ApiModelProperty(value = "派给了哪位执法员")
+    private Long assignedTo;
+
+    /** 派出那一刻落下的时刻 */
+    @TableField("dispatched_at")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @ApiModelProperty(value = "派出那一刻落下的时刻")
+    private Date dispatchedAt;
+
+    /** 分不出的原委 */
+    @TableField("fail_reason")
+    @ApiModelProperty(value = "分不出的原委")
+    private String failReason;
 
     /** 删除标记 0正常 1删除 */
     @TableField("del_flag")
@@ -106,6 +134,22 @@ public class TSaltYearTask implements Serializable {
         this.itemNo = itemNo;
     }
 
+    public Long getEntId() {
+        return entId;
+    }
+
+    public void setEntId(Long entId) {
+        this.entId = entId;
+    }
+
+    public Integer getBizType() {
+        return bizType;
+    }
+
+    public void setBizType(Integer bizType) {
+        this.bizType = bizType;
+    }
+
     public Date getDueAt() {
         return dueAt;
     }
@@ -122,12 +166,12 @@ public class TSaltYearTask implements Serializable {
         this.amount = amount;
     }
 
-    public String getContent() {
-        return content;
+    public String getScriptCode() {
+        return scriptCode;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setScriptCode(String scriptCode) {
+        this.scriptCode = scriptCode;
     }
 
     public Integer getStatus() {
@@ -136,6 +180,30 @@ public class TSaltYearTask implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Long getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(Long assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public Date getDispatchedAt() {
+        return dispatchedAt;
+    }
+
+    public void setDispatchedAt(Date dispatchedAt) {
+        this.dispatchedAt = dispatchedAt;
+    }
+
+    public String getFailReason() {
+        return failReason;
+    }
+
+    public void setFailReason(String failReason) {
+        this.failReason = failReason;
     }
 
     public Integer getDelFlag() {
