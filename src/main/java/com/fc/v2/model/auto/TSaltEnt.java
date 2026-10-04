@@ -51,6 +51,11 @@ public class TSaltEnt implements Serializable {
     @ApiModelProperty(value = "属地那一路(省—市—县)")
     private String roadName;
 
+    /** 联络人（空着几季没人补的，单子开不成） */
+    @TableField("contact_person")
+    @ApiModelProperty(value = "联络人")
+    private String contactPerson;
+
     /** 名录情形 0在册 1已摘牌 */
     @TableField("status")
     @ApiModelProperty(value = "名录情形 0在册 1已摘牌")
@@ -126,6 +131,14 @@ public class TSaltEnt implements Serializable {
 
     public void setRoadName(String roadName) {
         this.roadName = roadName;
+    }
+
+    public String getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
     }
 
     public Integer getStatus() {
